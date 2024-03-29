@@ -1,0 +1,25 @@
+/* .main-header {
+    display: flex;
+} */
+
+.navigation-wrap {
+    display: flex;
+}
+
+.logo-wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+.navigation {
+    display: flex;
+    justify-content: end; 
+}
+
+.navigation>ul {
+    display: flex;
+}
+
+.navigation>ul>li {
+    margin-left: 20px;
+    list-style: none;
+}
