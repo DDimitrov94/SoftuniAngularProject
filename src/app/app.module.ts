@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { RecipeModule } from './recipe/recipe.module';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { RecipeModule } from './recipe/recipe.module';
 
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,50 @@
 <div class="container">
-    <form class="login">
+    <form class="login" #form="ngForm" (ngSubmit)="login(form)">
         <fieldset>
             <h2>Login Form</h2>
 
             <p class="email-field">
-                <input type="email" name="email" id="email" placeholder="your.email@gmail.com">
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    placeholder="your.email@gmail.com"
+                    ngModel
+                    #inputEmail="ngModel"
+                    required
+                    />
             </p>
 
+            <ng-container *ngIf="inputEmail.touched">
+                <p class="error" *ngIf="inputEmail.errors?.['required']">
+                  Email is required!
+                </p>
+                <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+                  Email is not valid!
+                </p>
+            </ng-container>
+
             <p class="password-field">
-                <input type="password" name="password" id="password" placeholder="******" required minlength="5" />
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="******" 
+                    ngModel
+                    #inputPassword="ngModel"
+                    required 
+                    minlength="5"
+                    />
             </p>
+
+            <ng-container *ngIf="inputPassword.touched">
+                <p class="error" *ngIf="inputPassword.errors?.['required']">
+                    Password is required! 
+                </p>
+                <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+                     Password must be at least 5 characters!  
+                </p>
+            </ng-container>
 
             <button>
                 Login

@@ -1,33 +1,35 @@
-<div class="container">
-  <form class="register">
-    <fieldset>
-      <h2>Registration Form</h2>
-
-      <p>
-        <input class="input-error" type="text" name="username" id="username" placeholder="username"
-          formControlName="username" />
-      </p>
-      
-      <p>
-        <input type="email" name="email" id="email" placeholder="your.email@gmail.com" formControlName="email" />
-      </p>
-
-      <p>
-        <input type="password" name="password" id="password" placeholder="******" formControlName="password" />
-      </p>
-
-      <p>
-        <input type="password" name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword" />
-      </p>
-
-      <button>
-        Create Account
-      </button>
-
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/login">Log In</a>
-      </p>
-    </fieldset>
-  </form>
-</div>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <p>
+        <label for="username">Username:</label>
+        <input type="text" name="username" ngModel required #inputUsername="ngModel" minlength="2">
+        <ng-container *ngIf="inputUsername.touched">
+            <p class="error" *ngIf="inputUsername.errors?.['required']">
+                Username is required!
+            </p>
+            <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+                Username should be at least 2 characters!
+            </p>
+        </ng-container>
+    </p>
+    <p>
+        <label for="email">Email:</label>
+        <input type="email" name="email" ngModel required #inputEmail="ngModel">
+        <ng-container *ngIf="inputEmail.touched">
+            <p class="error" *ngIf="inputEmail.errors?.['required']">
+                Email is required!
+            </p>
+            <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+                Email should be at least 2 characters!
+            </p>
+        </ng-container>
+    </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" name="password" ngModel required #inputPassword="ngModel">
+    </p>
+    <p>
+        <label for="rePassword">Repeat Password:</label>
+        <input type="password" name="rePassword" ngModel required #inputPassword="ngModel">
+    </p>
+    <button type="submit">Register</button>
+</form>
