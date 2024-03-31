@@ -4,46 +4,89 @@
         <span>New Recipe</span>
       </div>
   
-      <form>
-        <div class="new-recipe-title">
-          <input
-            type="text"
-            name="recipeName"
-            id="recipeName"
-            placeholder="recipe"
-            minlength="5"
-          />
-        </div>
-        <span>Link to image</span>
-        <div class="new-recipe-image">
-          <input
-            type="text"
-            name="postText"
-            id="postText"
-            placeholder="https://..."
-          />
-        </div>
-        <span>Ingrediants</span>
-        <div class="new-recipe-ingrediants">
-          <textarea
-            type="text"
-            name="postText"
-            id="postText"
-          ></textarea>
-        </div>
-        <span>Description</span>
-        <div class="new-recipe-description">
-          <textarea
-            type="text"
-            name="postText"
-            id="postText"
-          ></textarea>
+      <form [formGroup]="myForm">
+        <div class="new-recipe-form">
+          <div>
+            <div class="new-recipe-title">
+              <input
+                type="text"
+                formControlName="recipeName"
+                id="recipeName"
+                placeholder="recipe"
+                minlength="5"
+              />
+            </div>
+
+            <br>
+
+            <span>Description</span>
+            <div class="new-recipe-description">
+              <textarea
+                type="text"
+                formControlName="descriptionText"
+                id="descriptionText"
+              ></textarea>
+            </div>
+
+            <br>
+
+            <span>Link to image</span>
+            <div class="new-recipe-image">
+              <input
+                type="text"
+                formControlName="linkText"
+                id="linkText"
+                placeholder="https://..."
+              />
+            </div>
+
+            <br>
+
+            <span>Ingrediants</span>
+            <div class="new-recipe-ingrediants" formArrayName="ingrediantFields">
+              <div *ngFor="let ingrediant of ingrediantFields.controls; let i = index" 
+                [formGroupName]="i"
+                >
+                <input
+                  placeholder="Ingrediant"  
+                  type="text"
+                  formControlName="ingrediant"
+                >
+                <button (click)="deleteItem(i)">Delete</button>
+              </div>
+            </div>
+
+            <br>
+
+            <button type="button" (click)="addField()">Add field</button>
+          </div>
         </div>
         <div class="new-recipe-buttons">
-          <button class="cancel">Cancel</button>
-          <button class="public">Post</button>
+          <button (click)="createRecipe()">Create</button>
         </div>
+        {{ myForm.value | json }}
       </form>
     </div>
   </div>
-  
+
+<!-- <div [formGroup]="form">
+  <div>
+    <label for="">Text</label>
+    <input type="text" placeholder="text" formControlName="text">
+  </div>
+  <div>
+    <label for="">Money</label>
+    <input type="text" placeholder="money" formControlName="money">
+  </div>
+  <button (click)="addItem()">Add</button>
+  <div formArrayName="items">
+    <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+      <input type="text" placeholder="name" formControlName="name" />
+      <input type="number" placeholder="age" formControlName="age" />
+      <button (click)="deleteItem(i)">Delete</button>
+    </div>
+  </div>
+  <button (click)="submit()">Submit</button>
+  {{ form.value | json }}
+</div> -->
+

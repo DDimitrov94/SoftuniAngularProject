@@ -3,7 +3,7 @@
       <div class="logo-wrap">
         <p class="logo"><span class="logo">FoodLovers</span></p>
       </div>
-      <div class="navigation">
+      <div *ngIf="!isLoggedIn" class="navigation">
         <ul>
           <li>
             <a routerLink="login">Login</a>
@@ -13,7 +13,7 @@
           </li>
         </ul>
       </div>
-      <div class="navigation">
+      <div *ngIf="isLoggedIn" class="navigation">
         <ul>
           <li>
             <a routerLink="profile">Profile</a>
