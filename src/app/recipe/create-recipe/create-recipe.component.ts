@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DebugTracingFeature } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-create-recipe',
@@ -8,62 +9,50 @@ import { DebugTracingFeature } from '@angular/router';
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent{
-  constructor(private formBuilder : FormBuilder){}
+  constructor(private formBuilder : FormBuilder, private apiService: ApiService){}
 
   myForm = this.formBuilder.group({
-    recipeName : ['',[Validators.required, Validators.minLength(1)]],
+    recipeName : ['',[Validators.required, Validators.minLength(3)]],
     descriptionText : ['',[Validators.required, Validators.minLength(10)]],
     linkText : ['',[Validators.required, Validators.minLength(10)]],
-    ingrediantFields: this.formBuilder.array([])
+    // TODO add custom picture link validator
+    ingredientFields: this.formBuilder.array([
+      this.formBuilder.control(
+      '',[Validators.required, Validators.minLength(3)])])
   }) 
   
 
-  get ingrediantFields(){
-    return this.myForm.get('ingrediantFields') as FormArray;
+  get ingredientFields(){
+    return this.myForm.get('ingredientFields') as FormArray;
   }
-  
+
   addField() {    
-    this.ingrediantFields.push(
-      this.formBuilder.group({
-        ingrediant: ['']
-    }));
+    this.ingredientFields.push(
+      this.formBuilder.control(
+        '',[Validators.required, Validators.minLength(3)]));
   }
 
   deleteItem(index:number) {
-    this.ingrediantFields.removeAt(index)
+    this.ingredientFields.removeAt(index)
   }
 
-  createRecipe () {
-    console.log(this.myForm.value);
+  getInput(i:number) {
+    return (<FormArray>this.myForm.get('ingredientFields')).controls[i];
   }
-
-
-  // constructor(private fb:FormBuilder) {}
-
-  // form = this.fb.group({
-  //   text: [''],
-  //   money: [''],
-  //   items:this.fb.array([])
-  // })
   
+  createRecipe() {
+    console.log(this.myForm.value);
+    
+    if (this.myForm.invalid) {
+      throw Error('Please fill all fields!');
+    }
 
-  // get items(){
-  //   return this.form.get('items') as FormArray
-  // }
+    const name = this.myForm.value.recipeName
+    const description = this.myForm.value.descriptionText
+    const image = this.myForm.value.linkText
+    const ingredients = this.myForm.value.ingredientFields
+    
 
-
-  // deleteItem(index:number) {
-  //   this.items.removeAt(index)
-  // }
-
-  // addItem() {
-  //   this.items.push(this.fb.group({
-  //     name: [''],
-  //     age: ['']
-  //   }))
-  // }
-
-  // submit() {
-  //   console.log(this.form.value);
-  // }
+    this.apiService.createRecipe({name,description,image,ingredients})
+  }
 }

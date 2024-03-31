@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
+import { UserService } from '../user/user.service';
 
 
 
@@ -19,7 +20,7 @@ import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
     CommonModule,
     RecipeRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     RecipesListComponent,
