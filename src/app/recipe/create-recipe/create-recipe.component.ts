@@ -16,6 +16,7 @@ export class CreateRecipeComponent{
     recipeName : ['',[Validators.required, Validators.minLength(3)]],
     descriptionText : ['',[Validators.required, Validators.minLength(10)]],
     linkText : ['',[Validators.required, Validators.minLength(10)]],
+    preperationTime : ['',[Validators.required]],
     // TODO add custom picture link validator
     ingredientFields: this.formBuilder.array([
       this.formBuilder.control(
@@ -51,10 +52,12 @@ export class CreateRecipeComponent{
     const name = this.myForm.value.recipeName
     const description = this.myForm.value.descriptionText
     const image = this.myForm.value.linkText
-    const ingredients = this.myForm.value.ingredientFields
+    const ingredients = this.myForm.value.ingredientFields as string[]
+    const preperationTime = Number(this.myForm.value.preperationTime)
+    
     
 
-    this.apiService.createRecipe({name,description,image,ingredients}).subscribe(()=> {
+    this.apiService.createRecipe(name!, description!, image!, ingredients!, preperationTime!).subscribe(()=> {
       this.router.navigate(['/home'])})
   }
 }

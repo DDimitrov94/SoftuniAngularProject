@@ -1,10 +1,11 @@
 export interface Recipe {
-    _id: string ,
+    _id: string | undefined
     name: string
     image: string
     ingredients: string[]
     description: string
-    favorite: string[]
-    owner: string
-    createdAt: string
+    preperationTime: number
+    favorite: string[] | undefined
+    owner: string | undefined
+    createdAt: string | undefined
 }
