@@ -1,4 +1,4 @@
-export interface  Recipe {
+export interface Recipe {
     _id: string ,
     name: string
     image: string

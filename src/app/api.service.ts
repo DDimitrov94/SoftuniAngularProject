@@ -10,12 +10,13 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   createRecipe(recipe: { name: string | null | undefined; description: string | null | undefined; image: string | null | undefined; ingredients: unknown[] | undefined; }){
-
-    return this.http.post(`${apiUrl}/create`, recipe)
+    console.log(recipe);
+    
+    return this.http.post(`/api/recipe/create`, recipe)
   };
 
   getRecipes() {
 
-    return this.http.get(`${apiUrl}/`)
+    return this.http.get(`/api/recipe`)
   }
 }

@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent{
-  constructor(private formBuilder : FormBuilder, private apiService: ApiService){}
+  constructor(private formBuilder : FormBuilder, private apiService: ApiService, private router:Router){}
 
   myForm = this.formBuilder.group({
     recipeName : ['',[Validators.required, Validators.minLength(3)]],
@@ -53,6 +54,7 @@ export class CreateRecipeComponent{
     const ingredients = this.myForm.value.ingredientFields
     
 
-    this.apiService.createRecipe({name,description,image,ingredients})
+    this.apiService.createRecipe({name,description,image,ingredients}).subscribe(()=> {
+      this.router.navigate(['/home'])})
   }
 }
