@@ -7,15 +7,17 @@ import { Recipe } from 'src/app/types/recipe';
   templateUrl: './recipes-list.component.html',
   styleUrls: ['./recipes-list.component.css']
 })
-export class RecipesListComponent implements OnInit{
+export class RecipesListComponent implements OnInit {
   recipes: Recipe[] = []
 
   constructor(private api: ApiService) {}
   
   ngOnInit(): void {
     this.api.getRecipes().subscribe((recipes) => {
-      console.log(recipes)
+      console.log(recipes);
       this.recipes = recipes
+      console.log(this.recipes);
     })
   }
+  
 }

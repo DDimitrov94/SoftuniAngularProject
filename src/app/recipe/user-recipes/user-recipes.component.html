@@ -1,0 +1,11 @@
+<p>user-recipes works!</p>
+
+<div class="container">
+    <h2 class="title">My Recipes List</h2>
+    <div class="recipe" *ngFor="let recipe of ownRecipes">
+        <h3 class="recipe-name">{{recipe.name}}</h3>
+        <img class="recipe-image"  src="{{recipe.image}}"/>
+        <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
+        <a routerLink= '/recipe/{{recipe._id}}'>Details</a>
+    </div>
+</div>

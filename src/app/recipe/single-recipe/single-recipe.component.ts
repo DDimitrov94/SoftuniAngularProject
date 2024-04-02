@@ -14,12 +14,11 @@ export class SingleRecipeComponent implements OnInit{
 
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {}
   
-
-
   ngOnInit(): void {
     this.api.getSingleRecipe(this.id).subscribe((recipe) => {
       console.log(recipe)
       this.recipe = recipe
     })
   }
+  
 }

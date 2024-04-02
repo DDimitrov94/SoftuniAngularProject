@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Recipe } from './types/recipe';
+import { User } from './types/user';
 const { apiUrl } = environment
 
 @Injectable({
@@ -31,7 +32,13 @@ export class ApiService {
   getSingleRecipe(recipeId: string) {
     return this.http.get<Recipe>(`/api/recipe/${recipeId}`)
   }
+
   getRecipes() {
     return this.http.get<Recipe[]>(`/api/recipe`)
   }
+
+  getOwnRecipes() {
+    return this.http.get<any>(`/api/recipe/owned`)
+  }
+
 }

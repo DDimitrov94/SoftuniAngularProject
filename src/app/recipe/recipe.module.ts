@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
+import { UserLikedComponent } from './user-liked/user-liked.component';
+import { UserRecipesComponent } from './user-recipes/user-recipes.component';
 
 
 
@@ -14,6 +16,8 @@ import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
     RecipesListComponent,
     CreateRecipeComponent,
     SingleRecipeComponent,
+    UserLikedComponent,
+    UserRecipesComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,8 @@ import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
     RecipesListComponent,
     CreateRecipeComponent,
     SingleRecipeComponent,
-    
+    UserLikedComponent,
+    UserRecipesComponent
   ]
 })
 export class RecipeModule { }
