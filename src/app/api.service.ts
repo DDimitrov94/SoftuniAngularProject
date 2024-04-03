@@ -50,7 +50,11 @@ export class ApiService {
   }
 
   getOwnRecipes() {
-    return this.http.get<any>(`/api/recipe/owned`)
+    return this.http.get<Recipe[]>(`/api/recipe/owned`)
+  }
+
+  getFavoriteRecipes() {
+    return this.http.get<User>(`/api/auth/userInfo`)
   }
 
 }

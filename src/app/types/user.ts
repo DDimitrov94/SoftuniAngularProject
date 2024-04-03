@@ -2,6 +2,7 @@ import { Recipe } from './recipe';
 
 export interface User {
   recipes: Recipe[];
+  favorites: Recipe[];
   _id: string;
   email: string;
   username: string;

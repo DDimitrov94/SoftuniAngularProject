@@ -7,9 +7,8 @@ import { Recipe } from 'src/app/types/recipe';
   templateUrl: './user-recipes.component.html',
   styleUrls: ['./user-recipes.component.css']
 })
-export class UserRecipesComponent implements OnInit{
+export class UserRecipesComponent{
   ownRecipes: Recipe[] = []
-  // likedRecipes: Recipe[] = []
 
   constructor(private api: ApiService) {}
 
@@ -17,7 +16,6 @@ export class UserRecipesComponent implements OnInit{
     this.api.getOwnRecipes().subscribe((recipes) => {
       console.log(recipes);
       this.ownRecipes = recipes
-      console.log(this.ownRecipes);
     })
   }
 }
