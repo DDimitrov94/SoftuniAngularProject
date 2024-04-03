@@ -33,6 +33,18 @@ export class ApiService {
     return this.http.get<Recipe>(`/api/recipe/${recipeId}`)
   }
 
+  likeRecipe(recipeId: string | undefined) {
+    return this.http.put<Recipe>(`/api/recipe/${recipeId}/like`, {})
+  }
+
+  unlikeRecipe(recipeId: string | undefined) {
+    return this.http.put<Recipe>(`/api/recipe/${recipeId}/unlike`, {})
+  }
+
+  deleteRecipe(recipeId: string | undefined) {
+    return this.http.delete<Recipe>(`/api/recipe/${recipeId}/delete`, {})
+  }
+
   getRecipes() {
     return this.http.get<Recipe[]>(`/api/recipe`)
   }

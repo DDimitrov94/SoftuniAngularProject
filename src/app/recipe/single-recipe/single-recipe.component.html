@@ -8,5 +8,8 @@
         <p>{{recipe.description}}</p>
         <p>{{recipe.ingredients}}</p>
         <p>{{recipe.createdAt}}</p>
+        <input type="button" class="btn addFavorite" value="Add to Favorites" (click)="addFavorite(recipe._id)">
+        <input type="button" class="btn removeFavorite" value="Remove from Favorites" (click)="removeFavorite(recipe._id)">
+        <input type="button" class="btn deleteRecipe" value="Delete this Recipe" (click)="deleteRecipe(recipe._id)">
     </div>
 </div>
