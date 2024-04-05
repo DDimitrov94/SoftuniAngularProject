@@ -18,12 +18,15 @@ export class SingleRecipeComponent implements OnInit{
   ngOnInit(): void {
     this.api.getSingleRecipe(this.id).subscribe((recipe) => {
       this.recipe = recipe
+      console.log(recipe);
 
       //TODO need to get the current userID somehow to check if current user has liked
       
       // if (this.recipe.favorite?.some()) {
         
       // }
+
+
     })
   }
 

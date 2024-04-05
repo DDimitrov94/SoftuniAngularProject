@@ -57,4 +57,7 @@ export class ApiService {
     return this.http.get<User>(`/api/auth/userInfo`)
   }
 
+  searchRecipes(query:string) {
+    return this.http.get<Recipe[]>(`/api/recipe/search/${query}`)
+  }
 }
