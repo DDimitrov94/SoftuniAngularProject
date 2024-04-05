@@ -12,13 +12,19 @@ export class SingleRecipeComponent implements OnInit{
   recipe: Recipe | undefined 
   id = this.activatedRoute.snapshot.params['id']
   hasLiked: boolean = false;
+  // curUser: string= '660d4583dcc2c709434eba9f'
 
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.api.getSingleRecipe(this.id).subscribe((recipe) => {
       this.recipe = recipe
-      console.log(recipe);
+      // const curUser = this.curUser
+      // const someUser: string = '660d4583dcc2c709434eba9f'
+      // if (recipe.favorite?.find((curUser) => curUser == someUser)) {
+      //   console.log('tru');
+        
+      // }
 
       //TODO need to get the current userID somehow to check if current user has liked
       

@@ -25,6 +25,12 @@ export class UserService implements OnDestroy {
     });
   }
 
+  getUserInfo() {
+    return this.http.get<UserForAuth>('/api/auth/userInfo').pipe(tap((user) => 
+      this.user$$.next(user)
+    ));
+  };
+
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>(`/api/auth/login`, { email, password })
