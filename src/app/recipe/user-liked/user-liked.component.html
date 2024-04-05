@@ -1,11 +1,15 @@
-<p>user-liked works!</p>
-
 <div class="container">
-    <h2 class="title">My Favorites List</h2>
-    <div class="recipe" *ngFor="let recipe of likedRecipes">
-        <h3 class="recipe-name">{{recipe.name}}</h3>
-        <img class="recipe-image"  src="{{recipe.image}}"/>
-        <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
-        <a routerLink= '/recipe/{{recipe._id}}'>Details</a>
+    <div class="favorite-recipe-container" *ngIf="(likedRecipes)">
+        <h2 class="title">My Favorites List</h2>
+        <div class="recipe" *ngFor="let recipe of likedRecipes">
+            <h3 class="recipe-name">{{recipe.name}}</h3>
+            <img class="recipe-image"  src="{{recipe.image}}"/>
+            <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
+            <a routerLink= '/recipe/{{recipe._id}}'>Details</a>
+        </div>
+    </div>
+
+    <div class="no-favorite-recipe-container" *ngIf="likedRecipes.length === 0">
+        <h2>You have no favorite recipes yet.</h2>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
@@ -10,16 +10,18 @@ import { Recipe } from 'src/app/types/recipe';
 })
 export class RecipeSearchComponent implements OnInit{
   recipes: Recipe[] = []
-  query = this.activatedRoute.snapshot.queryParams['recipe']
-
+  query: string = ''
+  
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {}
   
+  // query = this.activatedRoute.snapshot.queryParams['recipe']
   ngOnInit(): void {
-    this.api.searchRecipes(this.query).subscribe((recipes) => {
-      console.log(recipes);
-      this.recipes = recipes
-      console.log(this.recipes);
-    })
     
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.query = params['recipe'] ?? "";
+      this.api.searchRecipes(this.query).subscribe((recipes) => {
+        this.recipes = recipes
+      })
+    })
   }
 }
