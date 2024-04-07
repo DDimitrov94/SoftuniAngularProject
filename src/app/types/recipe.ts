@@ -1,3 +1,5 @@
+import { User } from "./user"
+
 export interface Recipe {
     _id: string | undefined
     name: string
@@ -6,6 +8,6 @@ export interface Recipe {
     description: string
     preperationTime: number
     favorite: string[] | undefined
-    owner: string | undefined
+    owner: User | undefined
     createdAt: string | undefined
 }

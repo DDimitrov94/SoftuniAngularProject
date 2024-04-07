@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, lastValueFrom, tap } from 'rxjs';
 import { UserForAuth } from '../types/user';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { UserForAuth } from '../types/user';
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
   user: UserForAuth | undefined;
   USER_KEY = '[user]';
@@ -23,6 +23,10 @@ export class UserService implements OnDestroy {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
+  }
+
+  async init(): Promise<any>{
+    return lastValueFrom(this.getUserInfo());
   }
 
   getUserInfo() {

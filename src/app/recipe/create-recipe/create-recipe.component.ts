@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 
 @Component({
@@ -10,7 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent{
-  constructor(private formBuilder : FormBuilder, private apiService: ApiService, private router:Router){}
+  
+  constructor(
+    private formBuilder : FormBuilder, 
+    private apiService: ApiService, 
+    private router:Router, 
+    private userService: UserService){}
 
   myForm = this.formBuilder.group({
     recipeName : ['',[Validators.required, Validators.minLength(3)]],
@@ -23,6 +29,9 @@ export class CreateRecipeComponent{
       '',[Validators.required, Validators.minLength(3)])])
   }) 
   
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+  }
 
   get ingredientFields(){
     return this.myForm.get('ingredientFields') as FormArray;
@@ -42,9 +51,7 @@ export class CreateRecipeComponent{
     return (<FormArray>this.myForm.get('ingredientFields')).controls[i];
   }
   
-  createRecipe() {
-    console.log(this.myForm.value);
-    
+  createRecipe() {    
     if (this.myForm.invalid) {
       throw Error('Please fill all fields!');
     }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,14 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 
     AppRoutingModule,
   ],
-  providers: [appInterceptorProvider],
+  providers: [appInterceptorProvider, UserService,
+    {
+      //With this your app will wait to resolve the promise of init() of your UserAuthService.
+      provide: APP_INITIALIZER, 
+      useFactory: (service: UserService) => function() { return service.init();},
+      deps: [UserService],
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

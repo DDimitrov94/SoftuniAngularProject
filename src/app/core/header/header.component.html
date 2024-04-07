@@ -31,9 +31,9 @@
           <a routerLink="home">Home</a>
         </li>
         <li>
-          <a routerLink="recipe-list">Recipe</a>
+          <a routerLink="recipe-list">Recipe list</a>
         </li>
-        <li>
+        <li *ngIf="isLoggedIn">
           <a routerLink="recipe-create">Create recipe</a>
         </li>
       </ul>

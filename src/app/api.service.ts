@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
 import { Recipe } from './types/recipe';
 import { User } from './types/user';
-const { apiUrl } = environment
 
 @Injectable({
   providedIn: 'root'
