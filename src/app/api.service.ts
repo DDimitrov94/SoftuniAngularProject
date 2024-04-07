@@ -29,6 +29,29 @@ export class ApiService {
     return this.http.post<Recipe>(`/api/recipe/create`, recipe)
   };
 
+  editRecipe(
+    name: string, 
+    description: string, 
+    image: string, 
+    ingredients: string[], 
+    preperationTime: number,
+    recipeId: string
+    ){
+    let recipe = {
+      name,
+      description,
+      image,
+      ingredients,
+      preperationTime,
+      }
+      
+    return this.http.put<Recipe>(`/api/recipe/${recipeId}/edit`, recipe )
+  }
+
+  deleteRecipe(recipeId: string | undefined) {
+    return this.http.delete<Recipe>(`/api/recipe/${recipeId}/delete`, {})
+  }
+
   getSingleRecipe(recipeId: string) {
     return this.http.get<Recipe>(`/api/recipe/${recipeId}`)
   }
@@ -39,10 +62,6 @@ export class ApiService {
 
   unlikeRecipe(recipeId: string | undefined) {
     return this.http.put<Recipe>(`/api/recipe/${recipeId}/unlike`, {})
-  }
-
-  deleteRecipe(recipeId: string | undefined) {
-    return this.http.delete<Recipe>(`/api/recipe/${recipeId}/delete`, {})
   }
 
   getRecipes() {
