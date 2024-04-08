@@ -3,7 +3,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleC
 import { FormArray, FormArrayName, FormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Recipe } from 'src/app/types/recipe';
+import { Recipe } from 'src/app/interfaces/recipe';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({

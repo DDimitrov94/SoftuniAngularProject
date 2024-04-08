@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Recipe } from 'src/app/types/recipe';
+import { Recipe } from 'src/app/interfaces/recipe';
 
 @Component({
   selector: 'app-profile',

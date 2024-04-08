@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Recipe } from './types/recipe';
-import { User } from './types/user';
+import { Recipe } from './interfaces/recipe';
+import { User } from './interfaces/user';
 
 @Injectable({
   providedIn: 'root'
