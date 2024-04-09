@@ -21,13 +21,13 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     UserLikedComponent,
     UserRecipesComponent,
     RecipeSearchComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
   ],
   imports: [
     CommonModule,
-    RecipeRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    RecipeRoutingModule
   ],
   exports: [
     RecipesListComponent,
@@ -36,7 +36,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     UserLikedComponent,
     UserRecipesComponent,
     RecipeSearchComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
   ]
 })
 export class RecipeModule { }

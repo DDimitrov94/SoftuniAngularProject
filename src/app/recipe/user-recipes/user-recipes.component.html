@@ -5,12 +5,12 @@
             <h3 class="recipe-name">{{recipe.name}}</h3>
             <img class="recipe-image"  src="{{recipe.image}}"/>
             <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
-            <a routerLink= '/recipe/{{recipe._id}}'>Details</a>
+            <a routerLink= '/recipe/recipe/{{recipe._id}}'>Details</a>
         </div>
     </div>
 
     <div class="no-created-recipe-container" *ngIf="ownRecipes.length === 0">
         <h2>You have not created any recipes yet.</h2>
-        <p>Create one <a routerLink="/recipe-create">now?</a></p>
+        <p>Create one <a routerLink="/recipe/recipe-create">now?</a></p>
     </div>
 </div>

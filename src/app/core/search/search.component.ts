@@ -16,7 +16,7 @@ export class SearchComponent {
   search() {
     const searchInput = this.form.value.search;
     if(this.form.value.search !== undefined){
-      this.router.navigate(['/search'], { queryParams: { recipe: searchInput } });
+      this.router.navigate(['/recipe/search'], { queryParams: { recipe: searchInput } });
     };
   }
 }

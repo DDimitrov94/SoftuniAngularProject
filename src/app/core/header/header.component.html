@@ -7,17 +7,17 @@
       <div *ngIf="!isLoggedIn" class="navigation">
         <ul>
           <li>
-            <a routerLink="login">Login</a>
+            <a routerLink="/auth/login">Login</a>
           </li>
           <li>
-            <a routerLink="register">Register</a>
+            <a routerLink="/auth/register">Register</a>
           </li>
         </ul>
       </div>
       <div *ngIf="isLoggedIn" class="navigation">
         <ul>
           <li>
-            <a routerLink="profile">Profile</a>
+            <a routerLink="/auth/profile">Profile</a>
           </li>
           <li >
             <a (click)="logout()">Logout</a>
@@ -31,10 +31,10 @@
           <a routerLink="home">Home</a>
         </li>
         <li>
-          <a routerLink="recipe-list">Recipe list</a>
+          <a routerLink="/recipe/recipe-list">Recipe list</a>
         </li>
         <li *ngIf="isLoggedIn">
-          <a routerLink="recipe-create">Create recipe</a>
+          <a routerLink="/recipe/recipe-create">Create recipe</a>
         </li>
       </ul>
     </nav>

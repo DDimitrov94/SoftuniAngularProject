@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmailDirective } from './validators/email.directive';
 import { ConvertTimePipe } from './convert-time.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
+import { ApiService } from '../api.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,13 +13,17 @@ import { ConvertTimePipe } from './convert-time.pipe';
   declarations: [
     EmailDirective,
     ConvertTimePipe,
+    RandomRecipeComponent,
+    PageNotFoundComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     EmailDirective,
-    ConvertTimePipe
+    ConvertTimePipe,    
+    RandomRecipeComponent,
   ]
 })
 export class SharedModule { }

@@ -65,6 +65,6 @@ export class CreateRecipeComponent{
     
 
     this.apiService.createRecipe(name!, description!, image!, ingredients!, preperationTime!).subscribe(()=> {
-      this.router.navigate(['/home'])})
+      this.router.navigate(['/recipe/recipe-list'])})
   }
 }

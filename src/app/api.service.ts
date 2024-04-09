@@ -54,6 +54,10 @@ export class ApiService {
     return this.http.get<Recipe>(`/api/recipe/${recipeId}`)
   }
 
+  getRandomRecipe() {
+    return this.http.get<Recipe>('/api/recipe/random')
+  }
+
   likeRecipe(recipeId: string | undefined) {
     return this.http.put<Recipe>(`/api/recipe/${recipeId}/like`, {})
   }

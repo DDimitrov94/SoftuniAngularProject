@@ -1,0 +1,12 @@
+<p>random-recipe works!</p>
+
+
+<div class="recipe-container" *ngIf="recipe">
+    <h2 class="title">Random Recipe</h2>
+    <div class="recipe">
+        <h3 class="recipe-name">{{recipe.name}}</h3>
+        <img class="recipe-image"  src="{{recipe.image}}"/>
+        <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
+        <a routerLink= '/recipe/recipe/{{recipe._id}}'>Details</a>
+    </div>
+</div>

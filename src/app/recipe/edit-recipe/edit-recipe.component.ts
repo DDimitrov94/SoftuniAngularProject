@@ -84,6 +84,6 @@ export class EditRecipeComponent {
     
 
     this.api.editRecipe(name!, description!, image!, ingredients!, preperationTime!, this.id!).subscribe(()=> {
-      this.router.navigate([`/recipe/${this.id}`])})
+      this.router.navigate([`/recipe/recipe/${this.id}`])})
   }
 }
