@@ -9,12 +9,14 @@
         <p>{{recipe.ingredients}}</p>
         <p>{{recipe.createdAt}}</p>
         <div *ngIf="isLogged">
-            <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked" (click)="addFavorite(recipe._id)">
-            <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked" (click)="removeFavorite(recipe._id)">
-            <div *ngIf="isOwner">
-                <a class="btn" routerLink='/recipe/recipe/{{recipe._id}}/edit'>Edit Recipe</a>
-                <input type="button" class="btn deleteRecipe" value="Delete this Recipe" (click)="deleteRecipe(recipe._id)">
+            <div *ngIf="!isOwner">
+                <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked" (click)="addFavorite(recipe._id)">
+                <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked" (click)="removeFavorite(recipe._id)">
             </div>
+        </div>
+        <div *ngIf="isOwner">
+            <a class="btn" routerLink='/recipe/recipe/{{recipe._id}}/edit'>Edit Recipe</a>
+            <input type="button" class="btn deleteRecipe" value="Delete this Recipe" (click)="deleteRecipe(recipe._id)">
         </div>
     </div>
 </div>

@@ -15,6 +15,10 @@ export class UserService implements OnDestroy {
 
   userSubscription: Subscription;
 
+  get username(): string | undefined{
+    return this.user?.username
+  }
+
   get isLogged(): boolean {
     return !!this.user;
   }

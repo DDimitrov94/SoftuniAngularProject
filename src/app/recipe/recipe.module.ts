@@ -10,6 +10,7 @@ import { UserLikedComponent } from './user-liked/user-liked.component';
 import { UserRecipesComponent } from './user-recipes/user-recipes.component';
 import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 
 
 
@@ -22,6 +23,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     UserRecipesComponent,
     RecipeSearchComponent,
     EditRecipeComponent,
+    RecipeCardComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,8 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     UserRecipesComponent,
     RecipeSearchComponent,
     EditRecipeComponent,
+    RecipeCardComponent
+
   ]
 })
 export class RecipeModule { }

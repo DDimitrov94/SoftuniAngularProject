@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 
@@ -8,12 +8,12 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent{
-  constructor(private userService:UserService, private router:Router, private elRef: ElementRef, private renderer: Renderer2) {  }
+  constructor(private userService:UserService, private router:Router ) {  }
 
-  // ngOnInit(): void {
-  //   console.log(this.elRef.nativeElement, 'mouseover', this.search);
-    
-  // }
+  
+  get username(): string | undefined{
+    return this.userService.username
+  }
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;

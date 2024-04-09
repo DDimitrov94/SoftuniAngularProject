@@ -24,6 +24,10 @@ export class SingleRecipeComponent implements OnInit{
   ngOnInit(): void {
     this.api.getSingleRecipe(this.id).subscribe((recipe) => {
       this.recipe = recipe
+
+      if (this.recipe.favorite?.some((e) => e == this.userService.user?._id)) {
+        this.hasLiked = true
+      }
     })
   }
 

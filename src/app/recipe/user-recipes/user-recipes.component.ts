@@ -14,7 +14,6 @@ export class UserRecipesComponent{
 
   ngOnInit(): void {
     this.api.getOwnRecipes().subscribe((recipes) => {
-      console.log(recipes);
       this.ownRecipes = recipes
     })
   }

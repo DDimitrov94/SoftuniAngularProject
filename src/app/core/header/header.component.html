@@ -17,10 +17,12 @@
       <div *ngIf="isLoggedIn" class="navigation">
         <ul>
           <li>
-            <a routerLink="/auth/profile">Profile</a>
+            <a routerLink="/auth/profile">{{username}}</a>
+            <i class="fa-solid fa-user-large"></i>
           </li>
           <li >
             <a (click)="logout()">Logout</a>
+            <i class="fa-solid fa-person-walking-luggage"></i>
           </li>
         </ul>
       </div>

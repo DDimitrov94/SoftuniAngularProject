@@ -13,7 +13,7 @@ export class GuestGuard {
     return this.userService.user$.pipe(
       map((user) => {
         if (!user) {
-          this.router.navigate(['/login'])
+          this.router.navigate(['/auth/login'])
           return false;
         }
         return true;

@@ -14,10 +14,7 @@ export class RecipesListComponent implements OnInit {
   
   ngOnInit(): void {
     this.api.getRecipes().subscribe((recipes) => {
-      console.log(recipes);
       this.recipes = recipes
-      console.log(this.recipes);
     })
   }
-  
 }

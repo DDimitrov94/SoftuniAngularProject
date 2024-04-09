@@ -13,9 +13,7 @@ export class UserLikedComponent implements OnInit{
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getFavoriteRecipes().subscribe((user) => {
-      console.log(user);
-      
+    this.api.getFavoriteRecipes().subscribe((user) => {      
       this.likedRecipes = user.favorites
     })
   }
