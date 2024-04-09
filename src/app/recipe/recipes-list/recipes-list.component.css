@@ -1,7 +1,10 @@
-.recipe-image {
-    max-width: 100px;
-    max-height: 100px;
-}
+/* .title {
+    background-image: url('https://i.imgur.com/Gr4Wpc7.jpeg');
+    width: 50vw;
+    height: 20vh;
+    padding-left: 20vw;
+    background-color: peru;
+} */
 
 .recipe-container {
     display: flex;
