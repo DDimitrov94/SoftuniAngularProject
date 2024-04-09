@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/interfaces/recipe';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-single-recipe',
@@ -11,26 +12,31 @@ import { Recipe } from 'src/app/interfaces/recipe';
 export class SingleRecipeComponent implements OnInit{
   recipe: Recipe | undefined 
   id = this.activatedRoute.snapshot.params['id']
+  
   hasLiked: boolean = false;
 
-  constructor(private api: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private api: ApiService, 
+    private activatedRoute: ActivatedRoute, 
+    private router: Router ,
+    private userService: UserService) {}
   
   ngOnInit(): void {
     this.api.getSingleRecipe(this.id).subscribe((recipe) => {
       this.recipe = recipe
-      //TODO need to get the current userID somehow to check if current user has liked
-      
-      // if (this.recipe.favorite?.some()) {
-        
-      // }
-
-
     })
+  }
+
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
+
+  get isOwner(): boolean {    
+    return this.userService.user?._id == this.recipe?.owner?._id
   }
 
   addFavorite(recipeId: string | undefined) {
     this.api.likeRecipe(recipeId).subscribe((result) => {
-      console.log(result)
 
       this.hasLiked = true
     })
@@ -38,7 +44,6 @@ export class SingleRecipeComponent implements OnInit{
 
   removeFavorite(recipeId: string | undefined) {
     this.api.unlikeRecipe(recipeId).subscribe((result) => {
-      console.log(result)
 
       this.hasLiked = false
     })
@@ -46,7 +51,6 @@ export class SingleRecipeComponent implements OnInit{
 
   deleteRecipe(recipeId: string | undefined) {
     this.api.deleteRecipe(recipeId).subscribe((result) => {
-      console.log(result)
 
       this.router.navigate(['/recipe/recipe-list'])
     })

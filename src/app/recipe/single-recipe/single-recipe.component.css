@@ -2,3 +2,19 @@
     max-width: 100px;
     max-height: 100px;
 }
+
+.btn {
+    display: inline-block;
+    background-color: rgb(235, 87, 87);
+    text-decoration: none;
+    border: 1px solid rgb(15, 75, 185);
+    color: black;
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.btn:hover,.btn:focus {
+    background-color: rgb(92, 11, 31);
+    color: white
+}
