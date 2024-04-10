@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="new-recipe-border">
+    <div class="header-background">
+      <span>New Recipe</span>
+    </div>
+
+    <form [formGroup]="myForm">
+      <div class="new-recipe-form">
+        <div>
+          <div class="new-recipe-title">
+            <input
+              type="text"
+              formControlName="recipeName"
+              id="recipeName"
+              placeholder="recipe"
+            />
+          </div>
+          <ng-container *ngIf="myForm.get('recipeName')?.touched">
+            <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['required']">
+              Recipe name is required!
+            </p>
+    
+            <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['minlength']">
+              Recipe must be at least 3 characters!
+            </p>
+          </ng-container>
+          <br>
+          <span>Description</span>
+          <div class="new-recipe-description">
+            <textarea
+              type="text"
+              formControlName="descriptionText"
+              id="descriptionText"
+            ></textarea>
+          </div>
+          <ng-container *ngIf="myForm.get('descriptionText')?.touched">
+            <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['required']">
+              Description is required!
+            </p>
+            <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['minlength']">
+              Please add a better description!
+            </p>
+          </ng-container>
+
+          <br>
+
+          <span>Link to image</span>
+          <div class="new-recipe-image">
+            <input
+              type="text"
+              formControlName="linkText"
+              id="linkText"
+              placeholder="https://..."
+            />
+          </div>
+          <ng-container *ngIf="myForm.get('linkText')?.touched">
+            <p class="error" *ngIf="myForm.get('linkText')?.errors?.['required']">
+              Link is required!
+            </p>
+            <p class="error" *ngIf="myForm.get('linkText')?.errors?.['minlength']">
+              Please add a valid link!
+            </p>
+          </ng-container>
+
+          <br>
+
+          <span>Preperation time</span>
+          <div class="new-recipe-preperation-time">
+            <input
+              type="number"
+              formControlName="preperationTime"
+              id="preperationTime"
+              placeholder="preperationTime"
+            />
+          </div>
+          <ng-container *ngIf="myForm.get('preperationTime')?.touched">
+            <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['required']">
+              Preperation time is required!
+            </p>
+    
+            <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['minlength']">
+              Preperation time must be at least 3 characters!
+            </p>
+          </ng-container>
+
+          <br>
+
+          <span>Ingredients</span>
+          <div class="new-recipe-ingredients" formArrayName="ingredientFields">
+            <div *ngFor="let ingredient of ingredientFields.controls; let i = index" 
+            >
+            <input
+              [formControlName]="i"
+              placeholder="Ingredient"  
+              type="text"
+              title="feature" 
+              required
+              >
+              <button (click)="deleteItem(i)">Delete</button>
+              <ng-container *ngIf="getInput(i)?.touched">
+                <p class="error" *ngIf="getInput(i).errors?.['required']">
+                  Ingredient is required!
+                </p>
+                <p class="error" *ngIf="getInput(i).errors?.['minlength']">
+                  Ingredient must be at least 3 letters!
+                </p>
+              </ng-container>
+            </div>
+            
+          </div>
+          <br>
+          <button type="button" (click)="addField()">Add field</button>
+        </div>
+      </div>
+      <div class="new-recipe-button">
+        <button (click)="createRecipe()">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+

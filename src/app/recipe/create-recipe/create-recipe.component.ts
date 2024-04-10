@@ -7,7 +7,7 @@ import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-create-recipe',
-  templateUrl: './create-recipe.component.html',
+  templateUrl: 'create-recipe.component.html',
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent{

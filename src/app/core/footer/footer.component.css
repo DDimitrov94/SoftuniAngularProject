@@ -1,9 +1,9 @@
-p {
+footer {
     position: relative;
-    margin-top: 40px;
-    bottom: 30px;
-    width: 80%;
-    left: 10%;
-    text-align: center;
-    background-color: lightcoral;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    background-color: #f95252;
 }

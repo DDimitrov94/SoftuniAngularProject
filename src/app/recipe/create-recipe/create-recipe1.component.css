@@ -1,21 +1,22 @@
-/* ---------- GENERAL ---------- */
-* {
-    -webkit-box-sizing: inherit;
-            box-sizing: inherit;
+/* @use postcss-preset-env {
+    stage: 0;
+  } */
+  
+
+  * {
+    box-sizing: inherit;
   }
   
   html {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   
-  .body {
+  body {
     background-color: #c0c0c0;
     font-family: 'Varela Round', sans-serif;
     line-height: 1.5;
     margin: 0;
-    position: absolute;
-    inset: 0;
+    min-block-size: 100vh;
     padding: 5vmin;
   }
   
@@ -29,8 +30,6 @@
     font: inherit;
     margin: 0;
     padding: 0;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
   }
   
@@ -39,23 +38,11 @@
     max-width: 100%;
     vertical-align: middle;
   }
-  
-  /* ---------- ALIGN ---------- */
+
   .align {
-    background-image: url('https://png2.cleanpng.com/sh/2ede9a4766e4772f11b410b5bc7bb79b/L0KzQoW3U8A3N5RrRAZ7YX72gLL5hf51NZR0h91ybnewh7F0gf4ua5J3jNH4bj3mf7Fyif5oNZxujNVxZX6wg8X2lvUuf5DyedC2d3BwcbA0gB9wc5pzf59ybj3lgrruiQQuc5p5e9pubj3meLbskvZ2dF5yh9HtNkXoSYS5WfRmOpc6SKM3NkK7R4S8UMMyP2EAT6o6Nka0SYOCVr5xdpg=/transparent-cooking-woman-cartoon-cooking-kitchen-stove-woman-woman-cooking-in-bright-kitchen-cheerful-mood65e9329de2f501.6287350317097816619296.png');
-    background-repeat: no-repeat;
-    /* height: 100vh; */
-    background-size: contain;
-    background-position: center;
     display: grid;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    justify-items: center;
     place-items: center;
   }
-  
-  /* ---------- BUTTON ---------- */
   
   .button {
     background-color: #33cc77;
@@ -68,7 +55,7 @@
     background-color: #28ad63;
   }
   
-  /* ---------- ICONS ---------- */
+
   .icons {
     display: none;
   }
@@ -80,12 +67,12 @@
     width: 1em;
   }
   
-  /* ---------- LOGIN ---------- */
-  .login {
+  
+  .recipe {
     width: 400px;
   }
   
-  .login__header {
+  .recipe-header {
     background-color: #f95252;
     border-top-left-radius: 1.25em;
     border-top-right-radius: 1.25em;
@@ -93,42 +80,40 @@
     padding: 1.25em 1.625em;
   }
   
-  .login__header :first-child {
+  .recipe-header :first-child {
     margin-top: 0;
   }
   
-  .login__header :last-child {
+  .recipe-header :last-child {
     margin-bottom: 0;
   }
   
-  .login h2 .icon {
+  .recipe h2 .icon {
     margin-right: 14px;
   }
   
-  .login__form {
+  .recipe-form {
     background-color: #fff;
     border-bottom-left-radius: 1.25em;
     border-bottom-right-radius: 1.25em;
     color: #777;
     display: grid;
-    grid-gap: 0.875em;
     gap: 0.875em;
     padding: 1.25em 1.625em;
   }
   
-  .login input {
+  .recipe input {
     border-radius: 0.1875em;
   }
   
-  .login input[type="email"],
-  .login input[type="password"] {
+  .recipe input[type="text"] ,.recipe textarea[type="text"],.recipe input[type="number"]{
     background-color: #eee;
     color: #777;
     padding: 0.25em 0.625em;
     width: 100%;
   }
   
-  .login input[type="submit"] {
+  .recipe input[type="submit"] {
     display: block;
     margin: 0 auto;
   }

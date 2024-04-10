@@ -1,0 +1,41 @@
+.home-wrapper {
+    /* display: flex;
+	margin: 150px;
+    justify-content: space-between; */
+    display: flex;
+    flex-wrap: wrap;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-left: 10vw;
+    gap: 40px;
+}
+
+
+.home-main {
+    width: 30vw;
+    flex-basis: auto;
+}
+
+.home-main > p{
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    font-size: 20px;
+    width: 30vw;
+    flex-basis: auto;
+}
+
+.aside {
+    background-color: #ddd;
+	flex: 0 1 200px;
+}
+
+.recipe{
+    margin:auto;
+    position: relative;
+    background: #fff;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 40px -10px #000;
+}

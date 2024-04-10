@@ -1,16 +1,23 @@
+
 .main-header {
-    font-size: 20;
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    background-color: #f95252;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .navigation-wrap {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-left: 10%;
+    justify-content: center;
+    gap: 10vw;
 }
 
 .logo-wrap {
     display: flex;
+    min-width: 200px
+    /* margin-right: 20vw; */
     /* justify-content: ; */
 }
 
@@ -18,31 +25,35 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    gap: 20px;
 }
 
 .nav-home-list-create > ul {
     list-style-type: none;
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .navigation {
     display: flex;
-    justify-items: end;
+    /* justify-items: end; */
+    gap: 20px;
 }
 
 .navigation>ul {
     display: flex;
+    gap: 20px;
 }
 
 .navigation>ul>li {
-    margin-left: 20px;
+    /* margin-left: 20px; */
     list-style: none;
 }
 
 .search-container {
     display: flex;
     align-items: center;
+    /* margin-left: 20vw; */
 }
 
 img {

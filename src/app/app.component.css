@@ -1,0 +1,24 @@
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper > * {
+    flex-grow: 0;
+}
+
+.main-wrapper > .content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.content-wrapper > *{
+    flex-grow: 1;
+}
+
+.router-outlet {
+    display: none;
+}

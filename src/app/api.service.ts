@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from './interfaces/recipe';
 import { User } from './interfaces/user';
+import { ErrorResponse } from './interfaces/error';
 
 @Injectable({
   providedIn: 'root'
@@ -79,6 +80,6 @@ export class ApiService {
   }
 
   searchRecipes(query:string) {
-    return this.http.get<Recipe[]>(`/api/recipe/search/${query}`)
+    return this.http.get<Recipe[]|ErrorResponse>(`/api/recipe/search/${query}`)
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/interfaces/recipe';
 
+
 @Component({
   selector: 'app-recipe-search',
   templateUrl: './recipe-search.component.html',
@@ -20,6 +21,12 @@ export class RecipeSearchComponent implements OnInit{
     this.activatedRoute.queryParams.subscribe(params => {
       this.query = params['recipe'] ?? "";
       this.api.searchRecipes(this.query).subscribe((recipes) => {
+        console.log(recipes);
+        if ('message' in recipes) {
+          
+          recipes = []
+          return;
+        }
         this.recipes = recipes
       })
     })

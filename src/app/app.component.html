@@ -1,9 +1,11 @@
 <app-authentication>
+    <main class="main-wrapper">
+        <app-header />
     
-    <app-header />
-
-    <router-outlet />
-
-    <app-footer />
+        <div class="content-wrapper">
+            <router-outlet class="router-outlet"/>
+        </div>
     
+        <app-footer />  
+    </main>
 </app-authentication>

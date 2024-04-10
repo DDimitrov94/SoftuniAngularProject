@@ -1,122 +1,104 @@
-<div class="container">
-  <div class="new-recipe-border">
-    <div class="header-background">
-      <span>New Recipe</span>
-    </div>
+<div class="align body">
 
-    <form [formGroup]="myForm">
-      <div class="new-recipe-form">
+    <div class="recipe">
+  
+      <header class="recipe-header">
+        <h2><svg class="icon">
+          </svg>Create Recipie</h2>
+      </header>
+  
+      <form class="recipe-form" [formGroup]="myForm">
+        <!--        NAME     -->
         <div>
-          <div class="new-recipe-title">
-            <input
-              type="text"
-              formControlName="recipeName"
-              id="recipeName"
-              placeholder="recipe"
-            />
-          </div>
-          <ng-container *ngIf="myForm.get('recipeName')?.touched">
-            <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['required']">
-              Recipe name is required!
-            </p>
-    
-            <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['minlength']">
-              Recipe must be at least 3 characters!
-            </p>
-          </ng-container>
-          <br>
-          <span>Description</span>
-          <div class="new-recipe-description">
-            <textarea
-              type="text"
-              formControlName="descriptionText"
-              id="descriptionText"
-            ></textarea>
-          </div>
-          <ng-container *ngIf="myForm.get('descriptionText')?.touched">
-            <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['required']">
-              Description is required!
-            </p>
-            <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['minlength']">
-              Please add a better description!
-            </p>
-          </ng-container>
-
-          <br>
-
-          <span>Link to image</span>
-          <div class="new-recipe-image">
-            <input
-              type="text"
-              formControlName="linkText"
-              id="linkText"
-              placeholder="https://..."
-            />
-          </div>
-          <ng-container *ngIf="myForm.get('linkText')?.touched">
-            <p class="error" *ngIf="myForm.get('linkText')?.errors?.['required']">
-              Link is required!
-            </p>
-            <p class="error" *ngIf="myForm.get('linkText')?.errors?.['minlength']">
-              Please add a valid link!
-            </p>
-          </ng-container>
-
-          <br>
-
-          <span>Preperation time</span>
-          <div class="new-recipe-preperation-time">
-            <input
-              type="number"
-              formControlName="preperationTime"
-              id="preperationTime"
-              placeholder="preperationTime"
-            />
-          </div>
-          <ng-container *ngIf="myForm.get('preperationTime')?.touched">
-            <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['required']">
-              Preperation time is required!
-            </p>
-    
-            <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['minlength']">
-              Preperation time must be at least 3 characters!
-            </p>
-          </ng-container>
-
-          <br>
-
-          <span>Ingredients</span>
-          <div class="new-recipe-ingredients" formArrayName="ingredientFields">
-            <div *ngFor="let ingredient of ingredientFields.controls; let i = index" 
-            >
-            <input
-              [formControlName]="i"
-              placeholder="Ingredient"  
-              type="text"
-              title="feature" 
-              required
-              >
-              <button (click)="deleteItem(i)">Delete</button>
-              <ng-container *ngIf="getInput(i)?.touched">
-                <p class="error" *ngIf="getInput(i).errors?.['required']">
-                  Ingredient is required!
-                </p>
-                <p class="error" *ngIf="getInput(i).errors?.['minlength']">
-                  Ingredient must be at least 3 letters!
-                </p>
-              </ng-container>
-            </div>
-            
-          </div>
-          <br>
-          <button type="button" (click)="addField()">Add field</button>
+          <label>Recipe name</label>
+          <input type="text" formControlName="recipeName" id="recipeName" placeholder="recipe" />
         </div>
-      </div>
-      <div class="new-recipe-button">
-        <button (click)="createRecipe()">Create</button>
-      </div>
-      {{ myForm.value | json }}
-    </form>
+        <ng-container *ngIf="myForm.get('recipeName')?.touched">
+          <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['required']">
+            Recipe name is required!
+          </p>
+  
+          <p class="error" *ngIf="myForm.get('recipeName')?.errors?.['minlength']">
+            Recipe must be at least 3 characters!
+          </p>
+        </ng-container>
+        <!--    Decription -->
+        <div>
+          <label>Description</label>
+          <textarea type="text" formControlName="descriptionText" id="descriptionText"></textarea>
+        </div>
+        <ng-container *ngIf="myForm.get('descriptionText')?.touched">
+          <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['required']">
+            Description is required!
+          </p>
+          <p class="error" *ngIf="myForm.get('descriptionText')?.errors?.['minlength']">
+            Please add a better description!
+          </p>
+        </ng-container>
+        <!--  Image  -->
+        <div>
+          <label>Link to image</label>
+          <input type="text" formControlName="linkText" id="linkText" placeholder="https://..." />
+        </div>
+        <ng-container *ngIf="myForm.get('linkText')?.touched">
+          <p class="error" *ngIf="myForm.get('linkText')?.errors?.['required']">
+            Link is required!
+          </p>
+          <p class="error" *ngIf="myForm.get('linkText')?.errors?.['minlength']">
+            Please add a valid link!
+          </p>
+        </ng-container>
+  
+        <!--     Preperation time   -->
+  
+        <div>
+          <label>Preperation time</label>
+          <input type="number" formControlName="preperationTime" id="preperationTime" placeholder="preperationTime" />
+        </div>
+        <ng-container *ngIf="myForm.get('preperationTime')?.touched">
+          <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['required']">
+            Preperation time is required!
+          </p>
+  
+          <p class="error" *ngIf="myForm.get('preperationTime')?.errors?.['minlength']">
+            Preperation time must be at least 3 characters!
+          </p>
+        </ng-container>
+  
+        <!--    Ingredients   -->
+  
+        <div>
+          <label>Ingredients</label>
+        </div>
+        <div class="new-recipe-ingredients" formArrayName="ingredientFields">
+          <div *ngFor="let ingredient of ingredientFields.controls; let i = index">
+            <input [formControlName]="i" placeholder="Ingredient" type="text" title="feature" required>
+            <button (click)="deleteItem(i)">Delete</button>
+            <ng-container *ngIf="getInput(i)?.touched">
+              <p class="error" *ngIf="getInput(i).errors?.['required']">
+                Ingredient is required!
+              </p>
+              <p class="error" *ngIf="getInput(i).errors?.['minlength']">
+                Ingredient must be at least 3 letters!
+              </p>
+            </ng-container>
+          </div>
+          <button type="button" (click)="addField()">Add field</button>
+  
+          <div>
+            <input class="button" type="submit" (click)="createRecipe()" value="Create Recipe">
+          </div>
+  
+          
+        </div>
+      </form>
+  
+    <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+  
+      <symbol id="icon-lock" viewBox="0 0 448 512">
+        <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" />
+      </symbol>
+  
+    </svg>
+  
   </div>
-</div>
-
