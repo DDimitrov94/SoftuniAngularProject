@@ -26,9 +26,29 @@
     flex-basis: auto;
 }
 
+.home-title {
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    font-size: 30px;
+    width: 30vw;
+    flex-basis: auto;
+}
+
 .aside {
     background-color: #ddd;
 	flex: 0 1 200px;
+}
+
+.random-recipe {
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    font-size: 20px;
+    width: 30vw;
+    flex-basis: auto;
+}
+
+.random-recipe > p {
+    text-align: center;
 }
 
 .recipe{

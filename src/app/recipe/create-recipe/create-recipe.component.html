@@ -72,8 +72,8 @@
         </div>
         <div class="new-recipe-ingredients" formArrayName="ingredientFields">
           <div *ngFor="let ingredient of ingredientFields.controls; let i = index">
-            <input [formControlName]="i" placeholder="Ingredient" type="text" title="feature" required>
-            <button (click)="deleteItem(i)">Delete</button>
+            <input class="ingredient" [formControlName]="i" placeholder="Ingredient" type="text" title="feature" required>
+            <button (click)="deleteItem(i)"><i class="fa-solid fa-trash"></i></button>
             <ng-container *ngIf="getInput(i)?.touched">
               <p class="error" *ngIf="getInput(i).errors?.['required']">
                 Ingredient is required!
@@ -83,7 +83,7 @@
               </p>
             </ng-container>
           </div>
-          <button type="button" (click)="addField()">Add field</button>
+          <button type="button" (click)="addField()">Add Ingredient</button>
   
           <div>
             <input class="button" type="submit" (click)="createRecipe()" value="Create Recipe">
