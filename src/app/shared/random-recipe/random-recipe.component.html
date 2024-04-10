@@ -1,24 +1,12 @@
-<!-- <div class="recipe-container" *ngIf="recipe">
-    <h2 class="title">Random Recipe</h2>
-    <div class="recipe">
-        <h3 class="recipe-name">{{recipe.name}}</h3>
-        <img class="recipe-image"  src="{{recipe.image}}"/>
-        <p>Preperation Time ~ {{recipe.preperationTime | convertTime}}</p>
-        <a routerLink= '/recipe/recipe/{{recipe._id}}'>Details</a>
-    </div>
-</div> -->
 <div class="card" *ngIf="recipe">
-    <div class="header">   
-       <img src="{{recipe.image}}">
-       <!-- <div class="icon">
-          <a href="#"><i class="fa fa-heart"></i></a>
-       </div> -->
-    </div>
-    <div class="text">
-       <h1 class="food"> {{ recipe.name }} </h1>
-       <i class="fa fa-clock-o"> {{ recipe.preperationTime | convertTime }}</i>
-       <span class="likes">{{recipe.favorite?.length}}<i class="fa fa-heart"></i></span>
-       <p class="info">{{ recipe.description }}</p>
-    </div>
-    <a routerLink= '/recipe/recipe/{{ recipe._id }}' class="btn">Let's Cook!</a>
- </div>
+   <div class="header">
+      <img src="{{recipe.image}}">
+   </div>
+   <div class="text">
+      <h1 class="food"> {{ recipe.name }} </h1>
+      <i class="fa fa-clock-o"> {{ recipe.preperationTime | convertTime }}</i>
+      <span class="likes"><span>{{recipe.favorite?.length}}</span><i class="fa fa-heart"></i></span>
+      <p class="info">{{ recipe.description }}</p>
+   </div>
+   <a routerLink='/recipe/recipe/{{ recipe._id }}' class="btn">Let's Cook!</a>
+</div>

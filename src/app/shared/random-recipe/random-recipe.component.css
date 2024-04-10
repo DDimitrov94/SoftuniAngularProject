@@ -1,7 +1,3 @@
-/* .recipe-image {
-    max-width: -webkit-fill-available;
-} */
-
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 *:not(.fa){
   margin: 0;
@@ -34,7 +30,9 @@ body {
 .card .header img{
   background: no-repeat center;
   background-size: cover;
-  min-height: 350px;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
 }
 .card .header .icon {
   height: 0;
@@ -51,9 +49,26 @@ body {
   color: #9b9b9b;
   margin: 0 30px;
 }
-.card .text .likes {
+
+.text {
   position: relative;
-  left: 60%;
+}
+
+.card .text .likes > span{
+  background-color: #17bebb;
+    position: relative;
+    color: white;
+    border-radius: 50px;
+    padding: 0.2em;
+    margin-right: -15px;
+    z-index: 10;
+}
+.card .text .likes {
+  position: absolute;
+  /* left: 60%; */
+  right: 5px;
+  top: -72px;
+  /* transform: translate(0px, -100%); */
 }
 .card .text .likes .fa-heart {
   position: relative;
@@ -90,4 +105,12 @@ body {
 .card a.btn:hover {
   background: #17bebb;
   transition: 250ms;
+}
+
+.info {
+  font-size: 1em;
+  height: 1.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

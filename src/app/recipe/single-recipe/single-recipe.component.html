@@ -1,19 +1,36 @@
 <div class="container" *ngIf="recipe">
-    <div class="recipe">
-        <h3 class="recipe-name">{{recipe.name}}</h3>
-        <img class="recipe-image"  src="{{recipe.image}}"/>
-        <p>{{recipe.description}}</p>
-        <p>{{recipe.ingredients}}</p>
-        <p>{{recipe.createdAt}}</p>
-        <div *ngIf="isLogged">
-            <div *ngIf="!isOwner">
-                <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked" (click)="addFavorite(recipe._id)">
-                <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked" (click)="removeFavorite(recipe._id)">
+    <div>
+
+        <div class="img-container">
+            <img class="recipe-image" src="{{recipe.image}}">
+            <p>Created: {{recipe.createdAt | date}}</p>
+        </div>
+        <div class="recipe">
+            <h2 class="recipe-name">{{recipe.name}}</h2>
+            <div class="recipe-ingrediants">
+                <h3>Ingredients</h3>
+                <div class="ingredients" *ngFor="let ingredient of recipe.ingredients;">
+                    <p class="ingredient">{{ingredient}}</p>
+                </div>
+            </div>
+            <div class="recipe-description">
+                <h3>Description</h3>
+                <p>{{recipe.description}}</p>
+            </div>
+            <div *ngIf="isLogged">
+                <div *ngIf="!isOwner">
+                    <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked"
+                        (click)="addFavorite(recipe._id)">
+                    <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked"
+                        (click)="removeFavorite(recipe._id)">
+                </div>
+            </div>
+            <div *ngIf="isOwner">
+                <a class="btn" routerLink='/recipe/recipe/{{recipe._id}}/edit'>Edit Recipe</a>
+                <input type="button" class="btn deleteRecipe" value="Delete this Recipe"
+                    (click)="deleteRecipe(recipe._id)">
             </div>
         </div>
-        <div *ngIf="isOwner">
-            <a class="btn" routerLink='/recipe/recipe/{{recipe._id}}/edit'>Edit Recipe</a>
-            <input type="button" class="btn deleteRecipe" value="Delete this Recipe" (click)="deleteRecipe(recipe._id)">
-        </div>
     </div>
+
 </div>

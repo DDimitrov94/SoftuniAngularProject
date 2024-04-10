@@ -76,7 +76,13 @@
       </div>
       <div class="new-recipe-ingredients" formArrayName="ingredientFields">
         <div *ngFor="let ingredient of ingredientFields.controls; let i = index">
-          <input class="ingredient" [formControlName]="i" placeholder="Ingredient" type="text" title="feature" required
+          <input 
+            class="ingredient" 
+            [formControlName]="i" 
+            placeholder="Ingredient" 
+            type="text" 
+            title="feature" 
+            required
             [(ngModel)]="recipe.ingredients[i]">
           <button (click)="deleteItem(i)"><i class="fa-solid fa-trash"></i></button>
           <ng-container *ngIf="getInput(i)?.touched">

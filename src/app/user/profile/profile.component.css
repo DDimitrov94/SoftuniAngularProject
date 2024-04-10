@@ -1,0 +1,6 @@
+.profile-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 60px 150px;
+
+}

@@ -4,7 +4,6 @@ import { EmailDirective } from './validators/email.directive';
 import { ConvertTimePipe } from './convert-time.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
-import { ApiService } from '../api.service';
 import { RouterModule } from '@angular/router';
 
 

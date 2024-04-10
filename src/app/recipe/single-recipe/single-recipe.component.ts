@@ -31,6 +31,10 @@ export class SingleRecipeComponent implements OnInit{
     })
   }
 
+  // get ingredients(): Array {
+  //   return this.recipe?.ingredients
+  // }
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }

@@ -1,14 +1,11 @@
 <div class="card">
    <div class="header">   
       <img src="{{recipe.image}}">
-      <!-- <div class="icon">
-         <a href="#"><i class="fa fa-heart"></i></a>
-      </div> -->
    </div>
    <div class="text">
       <h1 class="food"> {{ recipe.name }} </h1>
       <i class="fa fa-clock-o"> {{ recipe.preperationTime | convertTime }}</i>
-      <span class="likes">{{recipe.favorite?.length}}<i class="fa fa-heart"></i></span>
+      <span class="likes"><span>{{recipe.favorite?.length}}</span><i class="fa fa-heart" [ngStyle]="{'color': (isLiked ? 'red' : 'white')}"></i></span>
       <p class="info">{{ recipe.description }}</p>
    </div>
    <a routerLink= '/recipe/recipe/{{ recipe._id }}' class="btn">Let's Cook!</a>

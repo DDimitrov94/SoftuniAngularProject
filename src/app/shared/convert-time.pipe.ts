@@ -12,8 +12,10 @@ export class ConvertTimePipe implements PipeTransform {
  
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
- 
-    return hours + 'h ' + remainingMinutes + 'm';
-  }
 
+    if (hours>0) {
+      return hours + ' hours ' + remainingMinutes + ' minutes';
+    }
+    return remainingMinutes + ' minutes';
+  }
 }

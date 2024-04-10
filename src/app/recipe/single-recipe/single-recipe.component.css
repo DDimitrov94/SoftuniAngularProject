@@ -1,6 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > div{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
 .recipe-image {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 40vw;
+    max-height: 75vh;
+}
+
+.recipe {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    max-width: 30vw;
+    max-height: 100%;
+}
+
+.recipe-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {

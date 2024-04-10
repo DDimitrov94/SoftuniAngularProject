@@ -8,13 +8,16 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./recipe-card.component.css']
 })
 export class RecipeCardComponent implements OnInit{
-  @Input() recipe!: Recipe ;
+  @Input() recipe!: Recipe;
 
   constructor (private userService: UserService) { }
 
   ngOnInit(): void {
-    
   }
+  get isLiked(): boolean | undefined {
+    return this.recipe.favorite?.some((recipe) => recipe == this.userService.user?._id)
+  }
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
