@@ -1,14 +1,16 @@
 import {
   HTTP_INTERCEPTORS,
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Injectable, Provider } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Injectable, Provider, inject } from '@angular/core';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 const { apiUrl } = environment;
 
@@ -16,7 +18,9 @@ const { apiUrl } = environment;
 class AppInterceptor implements HttpInterceptor {
   API = '/api';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router ) {}
+
+  toastr = inject(ToastrService)
 
   intercept(
     req: HttpRequest<any>,
@@ -29,9 +33,34 @@ class AppInterceptor implements HttpInterceptor {
       });
     }
 
+    // return next.handle(req).pipe(
+    //   catchError((err) => {
+    //     return [err];
+    //   })
+    // );
     return next.handle(req).pipe(
-      catchError((err) => {
-        return [err];
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An unknown error occurred';
+        console.log(error);
+        
+        if (error.error instanceof ErrorEvent) {
+          console.log('error instanceof errorevent');
+          
+          errorMessage = `Error: ${error.error.message}`;
+        } else if(error.status === 404){
+          console.log('error status 404');
+
+          errorMessage = `${error.error.message}`;
+          this.router.navigate(['/404'])
+        }else{
+          errorMessage = `${error.error.message}`
+        }
+        // this.errorService.setErrorMessage(errorMessage);
+        debugger
+        console.log(errorMessage);
+        this.toastr.error(errorMessage, 'Major Error', {   timeOut: 3000, });
+        // this.toastr.error('error')
+        return  throwError(() => error);
       })
     );
   }

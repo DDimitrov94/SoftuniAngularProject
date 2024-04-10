@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { UserService } from './user/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -24,13 +26,18 @@ import { UserService } from './user/user.service';
             useFactory: (service: UserService) => function () { return service.init(); },
             deps: [UserService],
             multi: true
-        }],
+        },
+        ToastrService
+    ],
     bootstrap: [AppComponent],
     imports: [
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
         BrowserModule,
         CoreModule,
         SharedModule,
         HttpClientModule,
+
         AppRoutingModule
     ]
 })

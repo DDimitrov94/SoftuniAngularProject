@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { EMAIL_DOMAINS } from 'src/app/constants';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { EMAIL_DOMAINS } from 'src/app/constants';
 
 export class LoginComponent {
   domains = EMAIL_DOMAINS;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private toastr:ToastrService) { }
 
   login(form: NgForm) {
     if (form.invalid) {
@@ -22,6 +23,7 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(() => {
+      this.toastr.info('Welcome!', email,{positionClass:'toast-top-right', timeOut: 3000,} );
       this.router.navigate(['/']);
     });
   }
