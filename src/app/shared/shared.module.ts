@@ -5,6 +5,7 @@ import { ConvertTimePipe } from './convert-time.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
 import { RouterModule } from '@angular/router';
+import { MatchPasswordDirective } from './validators/matching-password.directive';
 
 
 
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     ConvertTimePipe,
     RandomRecipeComponent,
     PageNotFoundComponent,
+    MatchPasswordDirective
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,8 @@ import { RouterModule } from '@angular/router';
     EmailDirective,
     ConvertTimePipe,    
     RandomRecipeComponent,
+    PageNotFoundComponent,
+    MatchPasswordDirective,
   ]
 })
 export class SharedModule { }

@@ -6,6 +6,7 @@ import { UserRoutingModule } from './user-router.module';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeModule } from '../recipe/recipe.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { RecipeModule } from '../recipe/recipe.module';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RecipeModule
+    RecipeModule,
+    SharedModule
   ]
 })
 export class UserModule { }

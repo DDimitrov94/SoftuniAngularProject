@@ -48,6 +48,9 @@
           Link is required!
         </p>
         <p class="error" *ngIf="myForm.get('linkText')?.errors?.['minlength']">
+          Link too short.
+        </p>
+        <p class="error" *ngIf="myForm.get('linkText')?.errors?.['imgValidator']">
           Please add a valid link!
         </p>
       </ng-container>

@@ -3,13 +3,6 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
-interface User {
-  username: string;
-  email: string;
-  password: string;
-  repeatPassword: string;
-}
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -23,10 +16,7 @@ export class RegisterComponent {
       return;
     }
 
-    const { username, email, password , rePassword } = form.value;
-
-    console.log(form.value);
-    
+    const { username, email, password , rePassword } = form.value;    
 
     this.userService.register(username, email, password , rePassword).subscribe(() => {
       this.router.navigate(['/auth/login']);

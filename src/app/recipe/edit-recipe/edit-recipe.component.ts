@@ -4,6 +4,7 @@ import { FormArray, FormArrayName, FormBuilder, UntypedFormArray, Validators } f
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/interfaces/recipe';
+import { imgValidator } from 'src/app/shared/validators/img-validator';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -39,7 +40,7 @@ export class EditRecipeComponent {
   myForm = this.formBuilder.group({
     recipeName : ['',[Validators.required, Validators.minLength(3)]],
     descriptionText : ['',[Validators.required, Validators.minLength(10)]],
-    linkText : ['',[Validators.required, Validators.minLength(10)]],
+    linkText : ['',[Validators.required, Validators.minLength(10), imgValidator()]],
     preperationTime : ['',[Validators.required]],
     // TODO add custom picture link validator
     ingredientFields: this.formBuilder.array([
