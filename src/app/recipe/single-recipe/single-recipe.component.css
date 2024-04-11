@@ -30,6 +30,12 @@
     flex-direction: column;
 }
 
+.edit-delete-field {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
 .btn {
     display: inline-block;
     background-color: rgb(235, 87, 87);
@@ -39,6 +45,7 @@
     padding: 5px 15px;
     font-size: 16px;
     border-radius: 10px;
+    height: 100%;
 }
 
 .btn:hover,.btn:focus {
@@ -63,8 +70,9 @@
     position: relative;
     left: 2%;
     bottom: 30.7%;
-    font-size: 1.3em;
+    font-size: 2em;
     padding: 15px;
+    cursor: pointer;
 }
 
 .fa-solid.fa-heart {

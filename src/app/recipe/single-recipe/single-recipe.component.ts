@@ -39,6 +39,13 @@ export class SingleRecipeComponent implements OnInit{
     return this.userService.user?._id == this.recipe?.owner?._id
   }
 
+  toggleFavorites(recipeId: string | undefined) {
+    if (this.hasLiked) {
+      this.removeFavorite(recipeId)
+    } else {
+      this.addFavorite(recipeId)
+    }
+  }
   addFavorite(recipeId: string | undefined) {
     this.api.likeRecipe(recipeId).subscribe((result) => {
 

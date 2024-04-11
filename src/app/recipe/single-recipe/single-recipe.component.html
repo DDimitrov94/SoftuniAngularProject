@@ -17,18 +17,12 @@
                 <h3>Description</h3>
                 <p>{{recipe.description}}</p>
             </div>
-            <div class="fav-buttons" *ngIf="isLogged">
-                <!-- <i class="fa fa-heart" [ngStyle]="{'color': (hasLiked ? 'red' : 'white')}"></i> -->
-                <i class="fa-heart" [ngClass]="{'fa-solid': hasLiked, 'fa-regular' : !hasLiked}"></i>
-                
+            <div class="fav-buttons" *ngIf="isLogged">                
                 <div *ngIf="!isOwner">
-                    <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked"
-                    (click)="addFavorite(recipe._id)"> 
-                    <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked"
-                    (click)="removeFavorite(recipe._id)">
+                    <i title="Like" class="fa-heart" [ngClass]="{'fa-solid': hasLiked, 'fa-regular' : !hasLiked}" (click)="toggleFavorites(recipe._id)"></i>
                 </div>
             </div>
-            <div *ngIf="isOwner">
+            <div class="edit-delete-field" *ngIf="isOwner">
                 <a class="btn" routerLink='/recipe/recipe/{{recipe._id}}/edit'>Edit Recipe</a>
                 <input type="button" class="btn deleteRecipe" value="Delete this Recipe"
                     (click)="deleteRecipe(recipe._id)">
