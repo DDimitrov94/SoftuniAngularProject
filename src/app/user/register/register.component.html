@@ -58,7 +58,7 @@
             name="password" 
             ngModel 
             required 
-            minlength="2"
+            minlength="6"
             #inputPassword="ngModel">
         </div>
 
@@ -67,7 +67,7 @@
                 Password is required!
             </p>
             <p class="error" *ngIf="inputPassword.errors?.['minlength']">
-                Password should be at least 2 characters!
+                Password should be at least 6 characters!
             </p>
         </ng-container>
 
@@ -78,7 +78,7 @@
             name="rePassword" 
             ngModel 
             required 
-            minlength="2"
+            minlength="6"
             #inputRePassword="ngModel"
             [appMatchPassword]="'password'"
             >
@@ -89,7 +89,7 @@
                 Password is required!
             </p>
             <p class="error" *ngIf="inputRePassword.errors?.['minlength']">
-                Password should be at least 2 characters!
+                Password should be at least 6 characters!
             </p>
             <p class="error" *ngIf="inputRePassword.errors?.['appMatchPassword']">
                 Password does not match!

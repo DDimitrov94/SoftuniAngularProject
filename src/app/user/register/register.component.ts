@@ -17,6 +17,8 @@ export class RegisterComponent {
     }
 
     const { username, email, password , rePassword } = form.value;    
+    console.log( username, email, password , rePassword );
+    debugger
 
     this.userService.register(username, email, password , rePassword).subscribe(() => {
       this.router.navigate(['/auth/login']);

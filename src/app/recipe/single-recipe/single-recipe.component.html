@@ -17,12 +17,15 @@
                 <h3>Description</h3>
                 <p>{{recipe.description}}</p>
             </div>
-            <div *ngIf="isLogged">
+            <div class="fav-buttons" *ngIf="isLogged">
+                <!-- <i class="fa fa-heart" [ngStyle]="{'color': (hasLiked ? 'red' : 'white')}"></i> -->
+                <i class="fa-heart" [ngClass]="{'fa-solid': hasLiked, 'fa-regular' : !hasLiked}"></i>
+                
                 <div *ngIf="!isOwner">
                     <input type="button" class="btn addFavorite" value="Add to Favorites" *ngIf="!hasLiked"
-                        (click)="addFavorite(recipe._id)">
+                    (click)="addFavorite(recipe._id)"> 
                     <input type="button" class="btn removeFavorite" value="Remove from Favorites" *ngIf="hasLiked"
-                        (click)="removeFavorite(recipe._id)">
+                    (click)="removeFavorite(recipe._id)">
                 </div>
             </div>
             <div *ngIf="isOwner">

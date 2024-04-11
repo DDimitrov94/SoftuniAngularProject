@@ -50,7 +50,7 @@ class AppInterceptor implements HttpInterceptor {
           errorMessage = `${error.error.message}`
         }
 
-        this.toastr.error(errorMessage, 'Major Error', {   timeOut: 3000 });
+        this.toastr.error(errorMessage, 'Error', {   timeOut: 3000 });
         return  throwError(() => error);
       })
     );

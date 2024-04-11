@@ -7,13 +7,11 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './recipe-card.component.html',
   styleUrls: ['./recipe-card.component.css']
 })
-export class RecipeCardComponent implements OnInit{
+export class RecipeCardComponent{
   @Input() recipe!: Recipe;
 
   constructor (private userService: UserService) { }
 
-  ngOnInit(): void {
-  }
   get isLiked(): boolean | undefined {
     return this.recipe.favorite?.some((recipe) => recipe == this.userService.user?._id)
   }
