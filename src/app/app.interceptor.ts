@@ -33,15 +33,9 @@ class AppInterceptor implements HttpInterceptor {
       });
     }
 
-    // return next.handle(req).pipe(
-    //   catchError((err) => {
-    //     return [err];
-    //   })
-    // );
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         let errorMessage = 'An unknown error occurred';
-        console.log(error);
         
         if (error.error instanceof ErrorEvent) {
           console.log('error instanceof errorevent');
@@ -55,11 +49,8 @@ class AppInterceptor implements HttpInterceptor {
         }else{
           errorMessage = `${error.error.message}`
         }
-        // this.errorService.setErrorMessage(errorMessage);
-        debugger
-        console.log(errorMessage);
-        this.toastr.error(errorMessage, 'Major Error', {   timeOut: 3000, });
-        // this.toastr.error('error')
+
+        this.toastr.error(errorMessage, 'Major Error', {   timeOut: 3000 });
         return  throwError(() => error);
       })
     );

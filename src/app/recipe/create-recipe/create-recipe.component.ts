@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { imgValidator } from 'src/app/shared/validators/img-validator';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -11,20 +12,19 @@ import { imgValidator } from 'src/app/shared/validators/img-validator';
   templateUrl: 'create-recipe.component.html',
   styleUrls: ['./create-recipe.component.css']
 })
-export class CreateRecipeComponent{
-  
+export class CreateRecipeComponent{  
   constructor(
     private formBuilder : FormBuilder, 
     private apiService: ApiService, 
     private router:Router, 
-    private userService: UserService){}
+    private userService: UserService,
+    private toastr: ToastrService){}
 
   myForm = this.formBuilder.group({
     recipeName : ['',[Validators.required, Validators.minLength(3)]],
     descriptionText : ['',[Validators.required, Validators.minLength(10)]],
     linkText : ['',[Validators.required, Validators.minLength(10), imgValidator()]],
     preperationTime : ['',[Validators.required]],
-    // TODO add custom picture link validator
     ingredientFields: this.formBuilder.array([
       this.formBuilder.control(
       '',[Validators.required, Validators.minLength(3)])])
@@ -66,6 +66,7 @@ export class CreateRecipeComponent{
     
 
     this.apiService.createRecipe(name!, description!, image!, ingredients!, preperationTime!).subscribe(()=> {
+      this.toastr.info('Recipe created!', name! ,{positionClass:'toast-bottom-center', timeOut: 3000,} );
       this.router.navigate(['/recipe/recipe-list'])})
   }
 }

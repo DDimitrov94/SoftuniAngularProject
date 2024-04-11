@@ -21,7 +21,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     ],
     providers: [appInterceptorProvider, UserService,
         {
-            //With this your app will wait to resolve the promise of init() of your UserAuthService.
+            //With this the app will wait to resolve the promise of init() of UserAuthService.
             provide: APP_INITIALIZER,
             useFactory: (service: UserService) => function () { return service.init(); },
             deps: [UserService],

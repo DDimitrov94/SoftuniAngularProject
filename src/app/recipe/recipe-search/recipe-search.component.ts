@@ -15,15 +15,12 @@ export class RecipeSearchComponent implements OnInit{
   
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {}
   
-  // query = this.activatedRoute.snapshot.queryParams['recipe']
   ngOnInit(): void {
     
     this.activatedRoute.queryParams.subscribe(params => {
       this.query = params['recipe'] ?? "";
       this.api.searchRecipes(this.query).subscribe((recipes) => {
-        console.log(recipes);
         if ('message' in recipes) {
-          
           recipes = []
           return;
         }

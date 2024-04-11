@@ -1,7 +1,6 @@
 .form {
     display: flex;
     align-items: center;
-    /* gap: 10px; */
 }
 
 .input-field {
@@ -20,11 +19,9 @@
 
 .btn {
     transform: translate(-100%);
-    /* margin-left: -0.375em; */
     background: transparent;
     height: 30px;
     width: 30px;
-    /* padding: 0.3em 0.5em; */
     border: 0;
     border-left: 1px solid rgb(0, 0, 0);
     border-radius: 0px 40px 40px 0px;

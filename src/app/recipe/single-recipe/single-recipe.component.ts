@@ -31,10 +31,6 @@ export class SingleRecipeComponent implements OnInit{
     })
   }
 
-  // get ingredients(): Array {
-  //   return this.recipe?.ingredients
-  // }
-
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
@@ -58,10 +54,11 @@ export class SingleRecipeComponent implements OnInit{
   }
 
   deleteRecipe(recipeId: string | undefined) {
-    this.api.deleteRecipe(recipeId).subscribe((result) => {
-
-      this.router.navigate(['/recipe/recipe-list'])
-    })
+    if (confirm('Delete this recipe?')) {
+      this.api.deleteRecipe(recipeId).subscribe((result) => {
+        this.router.navigate(['/recipe/recipe-list'])
+      }) 
+    }
   }
 
 }

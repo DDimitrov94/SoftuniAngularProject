@@ -23,7 +23,7 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(() => {
-      this.toastr.info('Welcome!', email,{positionClass:'toast-top-right', timeOut: 3000,} );
+      this.toastr.info('Welcome!', email,{positionClass:'toast-bottom-center', timeOut: 3000,} );
       this.router.navigate(['/']);
     });
   }

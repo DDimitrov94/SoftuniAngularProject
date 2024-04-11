@@ -1,7 +1,4 @@
 .home-wrapper {
-    /* display: flex;
-	margin: 150px;
-    justify-content: space-between; */
     display: flex;
     flex-wrap: wrap;
     width: 70vw;
